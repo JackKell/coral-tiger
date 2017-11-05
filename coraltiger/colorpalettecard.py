@@ -2,13 +2,13 @@ import pygame
 from pygame import Surface
 
 from coraltiger.colors import Colors
-from coraltiger.types import Point
+from coraltiger.types import TPoint
 
 
 class ColorPaletteCard:
-    def __init__(self, origin: Point, size: Point):
-        self.origin: Point = origin
-        self.size: Point = size
+    def __init__(self, origin: TPoint, size: TPoint):
+        self.origin: TPoint = origin
+        self.size: TPoint = size
         self.colorFont = pygame.font.SysFont(None, 12)
 
     def draw(self, surface: Surface) -> None:

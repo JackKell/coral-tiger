@@ -5,13 +5,14 @@ from random import randint
 import pygame
 from pygame.surface import Surface
 
-from coraltiger.types import Point
+from coraltiger.types import TPoint
 
 
 def drawArrow(surface: Surface,
               color: Tuple[int, int, int],
-              startPoint: Point, endPoint: Point,
-              headSize: Point,
+              startPoint: TPoint,
+              endPoint: TPoint,
+              headSize: TPoint,
               lineWidth: int = 1) -> None:
     lineAngle = math.atan2(endPoint[1] - startPoint[1], endPoint[0] - startPoint[0])
     arrowHeadWidth = headSize[0]
@@ -27,7 +28,12 @@ def drawArrow(surface: Surface,
     pygame.draw.polygon(surface, color, [pointA, pointB, endPoint])
 
 
-def getRandomPoint(xMin: int, xMax: int, yMin: int, yMax: int) -> Point:
+def getPointFromPolarCoordinate(distance: float, angle: float, origin: TPoint=(0, 0)) -> Tuple[float, float]:
+    return (distance * math.cos(angle) + origin[0],
+            distance * math.sin(angle) + origin[1])
+
+
+def getRandomPoint(xMin: int, xMax: int, yMin: int, yMax: int) -> TPoint:
     return randint(xMin, xMax), randint(yMin, yMax)
 
 

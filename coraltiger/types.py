@@ -1,3 +1,5 @@
-from typing import Tuple
+from typing import Tuple, Mapping, List, Union
 
-Point = Tuple[int, int]
+TPoint = Tuple[Union[int, float], Union[int, float]]
+
+TGraph = Mapping[TPoint, List[TPoint]]
